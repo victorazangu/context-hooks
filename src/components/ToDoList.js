@@ -1,13 +1,22 @@
-import React from 'react';
+import React,{ useContext } from 'react';
 import { ThemeContext } from '../contexts/ThemeContext'
 
-class ToDoList extends React.Component{
-    static contextType = ThemeContext;
-    render() {
-        const { isDarkTheme, lightTheme, darkTheme,changeTheme } = this.context;
-        const theme = isDarkTheme ? darkTheme : lightTheme;
-        return (
-            <div style={{
+// class ToDoList extends React.Component{
+//     static contextType = ThemeContext;
+//     render() {
+//         const { isDarkTheme, lightTheme, darkTheme,changeTheme } = this.context;
+//         const theme = isDarkTheme ? darkTheme : lightTheme;
+//         return (
+            
+//         )
+//     }
+// }
+const ToDoList = () => {
+    const { isDarkTheme, lightTheme, darkTheme,changeTheme } = useContext(ThemeContext);
+    const theme = isDarkTheme ? darkTheme : lightTheme;
+    
+    return (
+        <div style={{
                 background: theme.background,
                 color: theme.text,
                 height: '140px',
@@ -18,8 +27,7 @@ class ToDoList extends React.Component{
                 <p className='item'>Gor for a walk</p>
                 <button className='ui button primary' onClick={changeTheme}>change the theme</button>
             </div>
-        )
-    }
+    )
 }
 
 export default ToDoList; 
